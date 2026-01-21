@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global CO₂ Emissions Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+</head>
+
+<div id="tooltip" class="tooltip"></div>
+
+<body>
+
+<main class="app">
+
+    <nav class="tabs" aria-label="Pages">
+        <button class="tab active" data-tab="dashboard">Dashboard</button>
+        <button class="tab" data-tab="about">About</button>
+    </nav>
+
+    <section class="tab-content active" id="tab-dashboard">
+
+        <div class="dashboard-wrap">
+
+            <aside class="panel">
+
+                <h4>Year range</h4>
+                <div class="year-range">
+                    <div class="year-track"></div>
+                    <div class="year-range-fill" id="yearFill"></div>
+
+                    <input type="range" id="yearStart" min="1960" max="2024" value="1990">
+                    <input type="range" id="yearEnd"   min="1960" max="2024" value="2024">
+                </div>
+                <div id="yearLabel"></div>
+
+                <h4>Region</h4>
+                <div class="dropdown" id="regionDropdown">
+                    <button class="dropdown-toggle">All regions</button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-actions">
+                            <button data-action="all">ALL</button>
+                            <button data-action="none">NONE</button>
+                        </div>
+                        <div class="dropdown-options" id="regionOptions"></div>
+                    </div>
+                </div>
+
+                <h4>Income level</h4>
+                <div class="dropdown" id="incomeDropdown">
+                    <button class="dropdown-toggle">All income levels</button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-actions">
+                            <button data-action="all">ALL</button>
+                            <button data-action="none">NONE</button>
+                        </div>
+                        <div class="dropdown-options" id="incomeOptions"></div>
+                    </div>
+                </div>
+
+            </aside>
+
+            <section class="content">
+
+                <div class="card kpi">
+                    <div>
+                        <div class="kpi-title">Total CO₂ emissions</div>
+                        <div class="kpi-value" id="kpiTotal">—</div>
+                        <div class="kpi-sub" id="kpiYoY"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>CO₂ emissions over time</h3>
+                    <svg id="lineChart"></svg>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="chart-title">Top CO₂ emitting countries</h3>
+                            <div class="chart-subtitle">
+                                Click a country to highlight across views
+                            </div>
+                        </div>
+
+                        <svg id="barChart"></svg>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="chart-title"></h3class>Emissions by source</h3>
+                        <svg id="stackedChart"></svg>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="chart-title"></h3class>Top GHG emitting countries</h3>
+                        <div class="chart-subtitle">
+                            Click a country to highlight across views
+                        </div>
+                    </div>
+
+    <svg id="treemapChart"></svg>
+</div>
+
+            </section>
+
+        </div>
+    </section>
+
+    <section class="tab-content" id="tab-about">
+        <div class="about-wrap">
+
+            <h2>About this dashboard</h2>
+            <p>
+                Interactive CO₂ emissions dashboard built with D3.js using
+                <strong>Our World in Data</strong> emissions dataset.
+            </p>
+
+            <h3>Authors</h3>
+            <p>
+                Valentin Tian
+            </p>
+
+            <h3>Methodology</h3>
+            <p>
+                Emissions are aggregated by year and filtered by selected
+                time range, region and income group.
+            </p>
+
+        </div>
+    </section>
+
+</main>
+
+  <footer class="site-footer">
+  <p>
+    © 2025 Valentin Tian. Created as part of the course 186.868 Visual Data Science (TU Wien).
+  </p>
+  <p>
+    Source code: 
+    <a href="https://github.com/valentin-tian/tuw-ds-ws2025-vizds-report" target="_blank" rel="noopener noreferrer">GitHub Repository</a>.
+  </p>
+  </footer>
+
+<script src="dashboard.js"></script>
+<script src="tabs.js"></script>
+
+</body>
+</html>
